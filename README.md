@@ -5,21 +5,25 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)](tsconfig.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](CONTRIBUTING.md)
 
-> **The 10-minute carbon report for SMEs.** CarbonSnap is an AGPLv3 open-source carbon accounting platform built for small and medium-sized enterprises, sustainability consultants, and corporate supply-chain leads — compliance-ready without enterprise SaaS price tags.
+<p align="center">
+   <img src="assets/readme-hero.svg" alt="CarbonSnap animated banner" width="100%" />
+</p>
+
+> **The 10-minute carbon report for SMEs.** CarbonSnap is an AGPLv3 open-source carbon accounting platform for small and medium-sized enterprises, sustainability consultants, and corporate supply-chain teams. It is designed to stay compliance-ready without the overhead of enterprise SaaS.
 
 ---
 
 ## Why CarbonSnap
 
-Traditional ESG software is bloated, expensive, and locks your carbon data into proprietary silos. CarbonSnap is the open, auditor-transparent alternative:
+Traditional ESG software is bloated, expensive, and locks carbon data into proprietary silos. CarbonSnap is built as an open, auditor-transparent alternative:
 
-| | |
+| Capability | What it delivers |
 | :--- | :--- |
-| **⚡ 10-minute onboarding** | Guided workflows let non-specialists (ops managers, finance leads) calculate their Scope 1, 2 and 3 footprint in minutes. |
-| **📊 Auditor-ready reports** | Standardized disclosures aligned with **EU CSRD (ESRS E1)**, **UK SECR**, **California SB 253** and the **GHG Protocol Corporate Standard**. |
-| **🌍 Built-in conversion factors** | Official 2024 datasets from UK DESNZ/DEFRA, the US EPA GHG Emission Factors Hub and global IPCC AR6 values. |
-| **🔒 100% data sovereignty** | Self-host on your own infrastructure with a single Docker command, or use the managed cloud tier. |
-| **🤝 AGPLv3 open source** | Free forever for self-hosting. No arbitrary user limits, no paywalled exports. |
+| Fast onboarding | Guided workflows help non-specialists calculate Scope 1, 2, and 3 emissions in minutes. |
+| Auditor-ready reporting | Standardized disclosures aligned with EU CSRD (ESRS E1), UK SECR, California SB 253, and the GHG Protocol Corporate Standard. |
+| Built-in conversion factors | Official 2024 datasets from UK DESNZ/DEFRA, the US EPA GHG Emission Factors Hub, and global IPCC AR6 values. |
+| Data sovereignty | Self-host on your own infrastructure with a single Docker command, or use the managed cloud tier. |
+| Open source by default | Free forever for self-hosting, with no arbitrary user limits and no paywalled exports. |
 
 ---
 
@@ -36,7 +40,7 @@ docker build -t carbonsnap .
 docker run -p 3000:3000 --env-file .env carbonsnap
 ```
 
-Open **http://localhost:3000**.
+Open [http://localhost:3000](http://localhost:3000).
 
 ### Local development
 
@@ -105,4 +109,4 @@ To add a new country pack, see the [Emission Factors documentation](emission-fac
 * **Security:** Report vulnerabilities via [SECURITY.md](SECURITY.md)
 * **Support:** See [SUPPORT.md](SUPPORT.md)
 
-*Maintained by the CarbonSnap open-source sustainability community.*
+Maintained by the CarbonSnap open-source sustainability community.

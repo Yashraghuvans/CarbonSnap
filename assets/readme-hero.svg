@@ -1,0 +1,60 @@
+<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">CarbonSnap animated banner</title>
+  <desc id="desc">A subtle animated banner with moving gradients, orbit lines, and a central carbon accounting signal.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#07131D" />
+      <stop offset="45%" stop-color="#0D2431" />
+      <stop offset="100%" stop-color="#123B35" />
+      <animateTransform attributeName="gradientTransform" type="translate" values="0 0; 40 0; 0 0" dur="10s" repeatCount="indefinite" />
+    </linearGradient>
+    <linearGradient id="accent" x1="180" y1="60" x2="1020" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6EE7B7" stop-opacity="0.1" />
+      <stop offset="50%" stop-color="#B5F5D0" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#7DD3FC" stop-opacity="0.15" />
+    </linearGradient>
+    <filter id="glow" x="0" y="0" width="1200" height="320" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="14" result="blur" />
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.55 0" />
+    </filter>
+    <clipPath id="clip">
+      <rect width="1200" height="320" rx="28" />
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#clip)">
+    <rect width="1200" height="320" rx="28" fill="url(#bg)" />
+    <circle cx="240" cy="70" r="130" fill="#7DD3FC" opacity="0.08">
+      <animate attributeName="cx" values="240;310;240" dur="12s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="70;90;70" dur="12s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="980" cy="240" r="160" fill="#6EE7B7" opacity="0.08">
+      <animate attributeName="cx" values="980;920;980" dur="14s" repeatCount="indefinite" />
+      <animate attributeName="cy" values="240;210;240" dur="14s" repeatCount="indefinite" />
+    </circle>
+
+    <g opacity="0.28" stroke="#B5F5D0" stroke-width="1.2">
+      <path d="M80 220C220 120 360 120 500 220S780 320 1120 120" stroke-dasharray="5 14" />
+      <path d="M60 120C220 200 360 200 500 120S780 40 1140 200" stroke-dasharray="5 14" />
+      <animate attributeName="opacity" values="0.18;0.38;0.18" dur="8s" repeatCount="indefinite" />
+    </g>
+
+    <g filter="url(#glow)">
+      <path d="M600 64C680 64 744 128 744 208C744 288 680 300 600 300C520 300 456 288 456 208C456 128 520 64 600 64Z" fill="url(#accent)" opacity="0.26" />
+      <circle cx="600" cy="182" r="84" stroke="#D5FCEB" stroke-width="1.8" opacity="0.9">
+        <animateTransform attributeName="transform" type="rotate" values="0 600 182;360 600 182" dur="18s" repeatCount="indefinite" />
+      </circle>
+      <circle cx="600" cy="182" r="122" stroke="#7DD3FC" stroke-width="1.1" opacity="0.35" stroke-dasharray="3 10">
+        <animateTransform attributeName="transform" type="rotate" values="360 600 182;0 600 182" dur="28s" repeatCount="indefinite" />
+      </circle>
+      <path d="M556 182H644" stroke="#F3FFF8" stroke-width="3.5" stroke-linecap="round" />
+      <path d="M600 138V226" stroke="#F3FFF8" stroke-width="3.5" stroke-linecap="round" />
+      <circle cx="600" cy="182" r="15" fill="#F3FFF8">
+        <animate attributeName="r" values="15;19;15" dur="3.8s" repeatCount="indefinite" />
+      </circle>
+    </g>
+
+    <text x="600" y="108" text-anchor="middle" fill="#EAFBF2" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="1.2">CarbonSnap</text>
+    <text x="600" y="248" text-anchor="middle" fill="#CFE8DD" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="18" font-weight="500" letter-spacing="0.8">Open-source carbon accounting for SMEs</text>
+  </g>
+</svg>
