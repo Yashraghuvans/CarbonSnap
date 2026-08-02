@@ -1,0 +1,59 @@
+{
+  "dataset": "GHG_GLOBAL_2024",
+  "name": "Global GHG Protocol & IPCC Baseline Factors 2024",
+  "year": 2024,
+  "country": "International",
+  "description": "Global baseline emission factors for international SME corporate accounting.",
+  "factors": [
+    {
+      "id": "global_elec_2024",
+      "category": "Electricity",
+      "name": "Global Grid Average Electricity",
+      "scope": 2,
+      "unit": "kWh",
+      "factorValue": 0.43000,
+      "datasetSource": "IEA / IPCC 2024",
+      "description": "Global weighted average grid power intensity (kg CO2e per kWh)"
+    },
+    {
+      "id": "global_gas_2024",
+      "category": "Stationary Fuel",
+      "name": "Global Natural Gas Standard",
+      "scope": 1,
+      "unit": "kWh",
+      "factorValue": 0.18500,
+      "datasetSource": "IPCC AR6",
+      "description": "Standard direct combustion factor (kg CO2e per kWh)"
+    },
+    {
+      "id": "global_diesel_2024",
+      "category": "Company Vehicles",
+      "name": "Diesel Fuel Standard",
+      "scope": 1,
+      "unit": "litres",
+      "factorValue": 2.68000,
+      "datasetSource": "IPCC AR6",
+      "description": "Commercial freight and fleet transport (kg CO2e per litre)"
+    },
+    {
+      "id": "global_waste_2024",
+      "category": "Waste",
+      "name": "Global Mixed Waste Standard",
+      "scope": 3,
+      "unit": "tonnes",
+      "factorValue": 460.00000,
+      "datasetSource": "IPCC 2024",
+      "description": "Global baseline for municipal solid waste disposal (kg CO2e per tonne)"
+    },
+    {
+      "id": "global_water_2024",
+      "category": "Water",
+      "name": "Global Mains Water Supply",
+      "scope": 3,
+      "unit": "m3",
+      "factorValue": 0.15000,
+      "datasetSource": "IPCC 2024",
+      "description": "Global average for public water distribution and treatment (kg CO2e per m3)"
+    }
+  ]
+}

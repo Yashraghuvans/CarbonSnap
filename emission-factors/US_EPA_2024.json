@@ -1,0 +1,69 @@
+{
+  "dataset": "US_EPA_2024",
+  "name": "US EPA GHG Emission Factors Hub 2024",
+  "year": 2024,
+  "country": "United States",
+  "description": "United States Environmental Protection Agency GHG Center factors.",
+  "factors": [
+    {
+      "id": "us_elec_grid_2024",
+      "category": "Electricity",
+      "name": "Electricity - US eGRID Subregion Average",
+      "scope": 2,
+      "unit": "kWh",
+      "factorValue": 0.38500,
+      "datasetSource": "US EPA 2024",
+      "description": "Average US grid electricity intensity (kg CO2e per kWh)"
+    },
+    {
+      "id": "us_gas_2024",
+      "category": "Stationary Fuel",
+      "name": "Natural Gas (US Commercial)",
+      "scope": 1,
+      "unit": "kWh",
+      "factorValue": 0.18120,
+      "datasetSource": "US EPA 2024",
+      "description": "Pipeline natural gas direct combustion (kg CO2e per kWh)"
+    },
+    {
+      "id": "us_gasoline_2024",
+      "category": "Company Vehicles",
+      "name": "Motor Gasoline / Petrol",
+      "scope": 1,
+      "unit": "litres",
+      "factorValue": 2.32100,
+      "datasetSource": "US EPA 2024",
+      "description": "Commercial passenger vehicles and light trucks (kg CO2e per litre)"
+    },
+    {
+      "id": "us_diesel_2024",
+      "category": "Company Vehicles",
+      "name": "Diesel Fuel No. 2",
+      "scope": 1,
+      "unit": "litres",
+      "factorValue": 2.69800,
+      "datasetSource": "US EPA 2024",
+      "description": "Heavy commercial trucks and machinery (kg CO2e per litre)"
+    },
+    {
+      "id": "us_waste_landfill_2024",
+      "category": "Waste",
+      "name": "Commercial Waste to Landfill",
+      "scope": 3,
+      "unit": "tonnes",
+      "factorValue": 450.00000,
+      "datasetSource": "US EPA WARM 2024",
+      "description": "Mixed commercial solid waste disposed in municipal landfill (kg CO2e per tonne)"
+    },
+    {
+      "id": "us_water_supply_2024",
+      "category": "Water",
+      "name": "Public Water Supply & Treatment",
+      "scope": 3,
+      "unit": "m3",
+      "factorValue": 0.16500,
+      "datasetSource": "US EPA 2024",
+      "description": "Municipal water supply and wastewater processing (kg CO2e per m3)"
+    }
+  ]
+}

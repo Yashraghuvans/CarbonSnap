@@ -1,0 +1,6 @@
+{
+  "name": "CarbonSnap",
+  "description": "CarbonSnap - Open-source carbon accounting tool for SMEs to calculate Scope 1, 2, and 3 carbon footprints, manage reporting periods, map emission factors, and export PDF reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

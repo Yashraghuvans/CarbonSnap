@@ -1,0 +1,199 @@
+{
+  "dataset": "UK_2024",
+  "name": "UK Government GHG Conversion Factors 2024 (DESNZ / Defra)",
+  "year": 2024,
+  "country": "United Kingdom",
+  "description": "Official UK Government greenhouse gas conversion factors for corporate carbon reporting.",
+  "factors": [
+    {
+      "id": "uk_elec_grid_2024",
+      "category": "Electricity",
+      "name": "Electricity - UK Grid Average (Location-Based)",
+      "scope": 2,
+      "unit": "kWh",
+      "factorValue": 0.20705,
+      "datasetSource": "DESNZ 2024",
+      "description": "Standard UK national grid electricity mix (kg CO2e per kWh)"
+    },
+    {
+      "id": "uk_elec_green_2024",
+      "category": "Electricity",
+      "name": "Electricity - 100% Certified Green Tariff (Market-Based)",
+      "scope": 2,
+      "unit": "kWh",
+      "factorValue": 0.00000,
+      "datasetSource": "DESNZ 2024",
+      "description": "Zero-carbon electricity backed by Renewable Energy Guarantees of Origin (REGO)"
+    },
+    {
+      "id": "uk_gas_2024",
+      "category": "Stationary Fuel",
+      "name": "Natural Gas (Gross CV)",
+      "scope": 1,
+      "unit": "kWh",
+      "factorValue": 0.18293,
+      "datasetSource": "DESNZ 2024",
+      "description": "Piped mains natural gas for building heating and industrial boilers (kg CO2e per kWh)"
+    },
+    {
+      "id": "uk_petrol_2024",
+      "category": "Company Vehicles",
+      "name": "Petrol / Gasoline (Average Fleet)",
+      "scope": 1,
+      "unit": "litres",
+      "factorValue": 2.30530,
+      "datasetSource": "DESNZ 2024",
+      "description": "Direct fuel burn in company petrol cars and vans (kg CO2e per litre)"
+    },
+    {
+      "id": "uk_diesel_2024",
+      "category": "Company Vehicles",
+      "name": "Diesel (Average Fleet)",
+      "scope": 1,
+      "unit": "litres",
+      "factorValue": 2.68450,
+      "datasetSource": "DESNZ 2024",
+      "description": "Direct fuel burn in company diesel cars, vans, and HGVs (kg CO2e per litre)"
+    },
+    {
+      "id": "uk_lpg_2024",
+      "category": "Stationary Fuel",
+      "name": "LPG / Propane Gas",
+      "scope": 1,
+      "unit": "litres",
+      "factorValue": 1.54320,
+      "datasetSource": "DESNZ 2024",
+      "description": "Bottled or bulk Liquefied Petroleum Gas (kg CO2e per litre)"
+    },
+    {
+      "id": "uk_heating_oil_2024",
+      "category": "Stationary Fuel",
+      "name": "Burning Oil / Kerosene",
+      "scope": 1,
+      "unit": "litres",
+      "factorValue": 2.54010,
+      "datasetSource": "DESNZ 2024",
+      "description": "Commercial heating oil (kg CO2e per litre)"
+    },
+    {
+      "id": "uk_refrig_r410a_2024",
+      "category": "Fugitive Emissions",
+      "name": "Refrigerant R410A Leakage",
+      "scope": 1,
+      "unit": "kg",
+      "factorValue": 2088.00000,
+      "datasetSource": "IPCC / DESNZ 2024",
+      "description": "HVAC and heat pump refrigerant top-ups / losses (kg CO2e per kg gas)"
+    },
+    {
+      "id": "uk_flight_domestic_2024",
+      "category": "Business Travel",
+      "name": "Flight - Domestic UK (per passenger-km)",
+      "scope": 3,
+      "unit": "pkm",
+      "factorValue": 0.24587,
+      "datasetSource": "DESNZ 2024",
+      "description": "Domestic flights with Radiative Forcing multiplier included (kg CO2e per pkm)"
+    },
+    {
+      "id": "uk_flight_short_2024",
+      "category": "Business Travel",
+      "name": "Flight - Short-haul European (per passenger-km)",
+      "scope": 3,
+      "unit": "pkm",
+      "factorValue": 0.15353,
+      "datasetSource": "DESNZ 2024",
+      "description": "Short-haul flights within Europe in Economy class (kg CO2e per pkm)"
+    },
+    {
+      "id": "uk_flight_long_2024",
+      "category": "Business Travel",
+      "name": "Flight - Long-haul International (per passenger-km)",
+      "scope": 3,
+      "unit": "pkm",
+      "factorValue": 0.19309,
+      "datasetSource": "DESNZ 2024",
+      "description": "Long-haul flights in Economy class (kg CO2e per pkm)"
+    },
+    {
+      "id": "uk_rail_2024",
+      "category": "Business Travel",
+      "name": "National Rail Travel (per passenger-km)",
+      "scope": 3,
+      "unit": "pkm",
+      "factorValue": 0.03549,
+      "datasetSource": "DESNZ 2024",
+      "description": "Passenger train travel across UK national rail network (kg CO2e per pkm)"
+    },
+    {
+      "id": "uk_taxi_2024",
+      "category": "Business Travel",
+      "name": "Taxi / Ride-hailing Travel (per km)",
+      "scope": 3,
+      "unit": "km",
+      "factorValue": 0.14870,
+      "datasetSource": "DESNZ 2024",
+      "description": "Business trips taken via cab or rideshare services (kg CO2e per km)"
+    },
+    {
+      "id": "uk_waste_landfill_2024",
+      "category": "Waste",
+      "name": "Commercial Waste to Landfill",
+      "scope": 3,
+      "unit": "tonnes",
+      "factorValue": 467.00000,
+      "datasetSource": "DESNZ 2024",
+      "description": "Mixed general municipal solid waste sent to landfill (kg CO2e per tonne)"
+    },
+    {
+      "id": "uk_waste_recycle_2024",
+      "category": "Waste",
+      "name": "Paper & Cardboard Recycling",
+      "scope": 3,
+      "unit": "tonnes",
+      "factorValue": 21.30000,
+      "datasetSource": "DESNZ 2024",
+      "description": "Sorted paper/cardboard sent for recycling processing (kg CO2e per tonne)"
+    },
+    {
+      "id": "uk_water_supply_2024",
+      "category": "Water",
+      "name": "Mains Water Supply",
+      "scope": 3,
+      "unit": "m3",
+      "factorValue": 0.14900,
+      "datasetSource": "DESNZ 2024",
+      "description": "Public water utility supply treatment and pumping (kg CO2e per m3)"
+    },
+    {
+      "id": "uk_water_treatment_2024",
+      "category": "Water",
+      "name": "Wastewater Treatment",
+      "scope": 3,
+      "unit": "m3",
+      "factorValue": 0.27200,
+      "datasetSource": "DESNZ 2024",
+      "description": "Sewerage collection and wastewater treatment process (kg CO2e per m3)"
+    },
+    {
+      "id": "uk_spend_it_2024",
+      "category": "Purchased Goods",
+      "name": "IT Hardware & Electronics Procurement",
+      "scope": 3,
+      "unit": "GBP_spend",
+      "factorValue": 0.24500,
+      "datasetSource": "DEFRA Supply Chain 2024",
+      "description": "Spend-based economic factor for computers, monitors, and phones (kg CO2e per £ spend)"
+    },
+    {
+      "id": "uk_spend_office_2024",
+      "category": "Purchased Goods",
+      "name": "Office Supplies & Stationery Procurement",
+      "scope": 3,
+      "unit": "GBP_spend",
+      "factorValue": 0.18500,
+      "datasetSource": "DEFRA Supply Chain 2024",
+      "description": "Spend-based factor for paper, furniture, and office consumables (kg CO2e per £ spend)"
+    }
+  ]
+}

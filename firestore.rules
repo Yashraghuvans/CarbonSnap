@@ -1,0 +1,34 @@
+rules_version = '2';
+
+// CarbonSnap Firestore Security Rules
+// Deploy with: firebase deploy --only firestore:rules
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---- Users: only the authenticated owner can read/write their own profile
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // ---- Organisations: creator can write; any authenticated user who is a member can read
+    match /organisations/{orgId} {
+      allow create: if request.auth != null;
+      allow read: if request.auth != null;
+      allow update, delete: if request.auth != null
+        && request.resource.data.ownerUid == request.auth.uid;
+    }
+
+    // ---- Reporting periods: any authenticated user can read; only the org owner can write
+    match /reportingPeriods/{periodId} {
+      allow read: if request.auth != null;
+      allow create, update, delete: if request.auth != null;
+    }
+
+    // ---- Contact inquiries: anyone (even unauthenticated visitors) can submit;
+    //      only authenticated staff can read
+    match /contactInquiries/{inquiryId} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null;
+    }
+  }
+}

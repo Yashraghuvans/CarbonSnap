@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+server.js
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Firebase CLI
+.firebase/
+firebase-debug.log
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun-debug.log*
+
+# Local runtime data
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Coverage & caches
+coverage/
+.eslintcache
+.cache/
