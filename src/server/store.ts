@@ -1,3 +1,8 @@
+/**
+ * CarbonSnap — store.ts
+ * FSD: server slice — ledger store
+ * In-process data service: tenant workspaces, activities, summary calculations, audit logs.
+ */
 import {
   ActivityEntry,
   ApiKey,
@@ -40,7 +45,7 @@ import {
   CaliforniaSbReport,
   PublicVerificationCertificate,
   PlaybookLead
-} from '../types.js';
+} from '../shared/model/types.js';
 import { calculationEngine } from './calculationEngine.js';
 
 export class Store {

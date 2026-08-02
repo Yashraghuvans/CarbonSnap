@@ -12,8 +12,34 @@ CarbonSnap is a lightweight, security-first carbon accounting platform: a React 
 | **Authentication** | Firebase Authentication — email/password and Google (popup) sign-in |
 | **Tenant registry** | Firebase Firestore — `users`, `organisations`, `reportingPeriods`, `contactInquiries` collections (rules in `firestore.rules`) |
 | **Backend** | Express.js on Node.js/TypeScript; every `/api/*` route (except a small public whitelist) verifies the caller's Firebase ID token |
-| **Ledger & calculation** | In-process data service with deterministic factor conversion engine (`src/lib/calculator.ts`) |
+| **Ledger & calculation** | In-process data service with deterministic factor conversion engine (`src/server/calculationEngine.ts`) |
 | **Packaging** | Single-command Docker image (see `Dockerfile`) bundling static assets + API on port `3000` |
+
+## Frontend architecture (Feature-Sliced Design)
+
+```
+src/
+  app/        providers + routing shell (App.tsx, main.tsx)
+  pages/      route-level compositions (landing, auth, dashboard, share)
+  widgets/    composite blocks (navbar, landing sections, dashboard view)
+  features/   user flows, each owning its UI (auth, activities, reports, …)
+  entities/   domain API slices (organisation, activity, factor)
+  shared/     api client, hooks, i18n, domain types
+  server/     backend slice — ledger store + calculation engine (Node-side)
+```
+
+**Layer import direction** is strictly `app → pages → widgets → features →
+entities → shared` (never the reverse). **Data flow** is three-level
+`api → hook → ui`:
+
+1. `api` — `src/shared/api/client.ts` (authedFetch + endpoints), domain slices
+   in `src/entities/*/api.ts`.
+2. `hook` — `src/shared/hooks/useWorkspace.ts`, `useInventory.ts` own state
+   and call the API.
+3. `ui` — pages/widgets/features render hook data; they never call the API
+   client directly (legacy views are being migrated).
+
+See `docs/features.md` and `docs/flows.md` for the inventory and key flows.
 
 ---
 
@@ -39,7 +65,7 @@ CarbonSnap is a lightweight, security-first carbon accounting platform: a React 
          │      ├── /api/v1/reporting-periods
          │      └── /api/v1/activities | summary | periods/compare
          │
-         ├── Calculation engine (src/lib/calculator.ts)
+         ├── Calculation engine (src/server/calculationEngine.ts)
          │      └── Emission factor datasets (/emission-factors/*.json)
          │
          └── Reporting endpoints (SECR / CSRD / SB 253, audit bundles, certificates)
@@ -96,7 +122,7 @@ Global Warming Potentials align with **IPCC AR6** 100-year metrics. Scope 2 supp
          │      ├── /api/v1/activities
          │      ├── /api/v1/organisations
          │      └── /api/v1/reporting-periods
-         ├── Calculation engine (src/lib/calculator.ts)
+         ├── Calculation engine (src/server/calculationEngine.ts)
          │      └── Emission factor datasets (/emission-factors/*.json)
          └── Reporting / PDF / audit-bundle generators
 ```

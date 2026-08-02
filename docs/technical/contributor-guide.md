@@ -53,7 +53,7 @@ Smoke-test checklist:
 
 1. **Clean lint:** `npm run lint` passes with no errors.
 2. **Builds:** `npm run build` completes successfully.
-3. **Calculation integrity:** changes to `src/lib/calculator.ts` or factor datasets must be verified against official DEFRA/DESNZ, EPA or IPCC figures.
+3. **Calculation integrity:** changes to `src/server/calculationEngine.ts` or factor datasets must be verified against official DEFRA/DESNZ, EPA or IPCC figures.
 4. **No secrets:** never commit `.env`, API keys, or Firebase service-account files.
 5. **Docs:** user-visible behavior changes update the relevant guide in `docs/`.
 6. **Signed commits:** commits are signed off (see [CONTRIBUTING.md](../../CONTRIBUTING.md)).

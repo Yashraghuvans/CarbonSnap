@@ -1,6 +1,11 @@
+/**
+ * CarbonSnap — calculationEngine.ts
+ * FSD: server slice — calculation engine
+ * Deterministic tCO2e conversion using emission factor datasets with Scope 2 location/market logic.
+ */
 import fs from 'fs';
 import path from 'path';
-import { EmissionFactor, EmissionFactorDataset, ScopeType } from '../types.js';
+import { EmissionFactor, EmissionFactorDataset, ScopeType } from '../shared/model/types.js';
 
 export class CalculationEngine {
   private datasets: Map<string, EmissionFactorDataset> = new Map();
