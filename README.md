@@ -9,8 +9,6 @@
    <img src="assets/readme-hero.svg" alt="CarbonSnap animated banner" width="100%" />
 </p>
 
-> **The 10-minute carbon report for SMEs.** CarbonSnap is an AGPLv3 open-source carbon accounting platform for small and medium-sized enterprises, sustainability consultants, and corporate supply-chain teams. It is designed to stay compliance-ready without the overhead of enterprise SaaS.
-
 ---
 
 ## Why CarbonSnap
