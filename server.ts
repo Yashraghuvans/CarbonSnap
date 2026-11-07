@@ -1083,6 +1083,9 @@ async function startServer() {
   // Public Verification Seal API
   app.get('/api/verify/:certId', (req, res) => {
     const cert = store.getPublicVerificationCertificate(req.params.certId);
+    if (!cert) {
+      return res.status(404).json({ error: `Verification certificate '${req.params.certId}' was not found.` });
+    }
     res.json(cert);
   });
 

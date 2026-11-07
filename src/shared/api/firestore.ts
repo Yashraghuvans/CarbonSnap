@@ -50,10 +50,17 @@ export interface FirestoreReportingPeriod {
   notes: string;
 }
 
-const usersCol = () => collection(firebaseDb, 'users');
-const organisationsCol = () => collection(firebaseDb, 'organisations');
-const reportingPeriodsCol = () => collection(firebaseDb, 'reportingPeriods');
-const contactInquiriesCol = () => collection(firebaseDb, 'contactInquiries');
+function requireDb() {
+  if (!firebaseDb) {
+    throw new Error('Firebase is not configured.');
+  }
+  return firebaseDb;
+}
+
+const usersCol = () => collection(requireDb(), 'users');
+const organisationsCol = () => collection(requireDb(), 'organisations');
+const reportingPeriodsCol = () => collection(requireDb(), 'reportingPeriods');
+const contactInquiriesCol = () => collection(requireDb(), 'contactInquiries');
 
 // -------------------------------------------------------------
 // Users

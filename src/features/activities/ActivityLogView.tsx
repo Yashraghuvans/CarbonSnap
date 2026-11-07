@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import { ActivityEntry, ActivityFormData, EmissionFactor, Organisation, ReportingPeriod, UserRole } from '../../shared/model/types';
 import { BulkImportModal } from './BulkImportModal';
 import { Language, translations } from '../../shared/i18n/translations';
+import { activityMatchesQuery, formatFixed } from '../../shared/model/inventorySafety';
 
 interface ActivityLogViewProps {
   activities: ActivityEntry[];
@@ -134,14 +135,9 @@ export const ActivityLogView: React.FC<ActivityLogViewProps> = ({
   };
 
   // Filter activities
-  const filteredActivities = activities.filter(a => {
-    const matchesSearch =
-      a.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      a.activityType.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      a.facilityLocation?.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesScope = scopeFilter === 'ALL' || a.sourceScope === scopeFilter;
-    return matchesSearch && matchesScope;
-  });
+  const filteredActivities = (activities ?? []).filter((a) =>
+    activityMatchesQuery(a, searchQuery, scopeFilter)
+  );
 
   return (
     <div className="space-y-8 font-sans">
@@ -421,13 +417,13 @@ export const ActivityLogView: React.FC<ActivityLogViewProps> = ({
                         </span>
                       </td>
                       <td className="py-3 px-4 border-r-2 border-black text-right font-mono font-bold text-black">
-                        {entry.quantity.toLocaleString()} {entry.unit}
+                        {formatFixed(entry.quantity, 2)} {entry.unit ?? ''}
                       </td>
                       <td className="py-3 px-4 border-r-2 border-black text-right font-mono font-black text-black">
-                        {entry.co2e_kg.toLocaleString()}
+                        {formatFixed(entry.co2e_kg, 2)}
                       </td>
                       <td className="py-3 px-4 border-r-2 border-black text-right font-mono font-black text-black">
-                        {(entry.co2e_kg / 1000).toFixed(3)}
+                        {formatFixed(Number(entry.co2e_kg) / 1000, 3)}
                       </td>
                       <td className="py-3 px-4 text-center">
                         <div className="flex items-center justify-center space-x-2">

@@ -29,7 +29,7 @@ import {
 let cachedToken: string | null = null;
 
 export async function getAuthToken(): Promise<string | null> {
-  const currentUser = firebaseAuth.currentUser;
+  const currentUser = firebaseAuth?.currentUser;
   if (!currentUser) return null;
   if (!cachedToken) {
     cachedToken = await currentUser.getIdToken();

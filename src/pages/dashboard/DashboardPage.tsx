@@ -77,6 +77,24 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSignOut, onOpenS
 
   const loading = authInitializing || (isAuthenticated && workspace.booting);
 
+  if (inventory.error && !inventory.summary) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center text-black font-sans p-6">
+        <div className="max-w-lg border-2 border-black p-6 space-y-3">
+          <h1 className="text-xl font-black uppercase">Inventory unavailable</h1>
+          <p className="text-sm font-bold text-neutral-700">{inventory.error}</p>
+          <button
+            type="button"
+            onClick={() => void inventory.refresh()}
+            className="px-4 py-2 bg-black text-white text-xs font-black uppercase"
+          >
+            Try again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center text-black font-sans">
@@ -293,7 +311,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSignOut, onOpenS
         {/* Footer */}
         <footer className="bg-white border-t-2 border-black text-black py-6 text-xs font-bold uppercase tracking-wider print:hidden">
           <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <p>© {new Date().getFullYear()} CarbonSnap • AGPLv3 Open Source</p>
+            <p>© {new Date().getFullYear()} CarbonSnap</p>
             <div className="flex items-center space-x-4">
               <span>UK DESNZ 2024 GHG Factors</span>
               <span>•</span>
@@ -303,7 +321,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onSignOut, onOpenS
                 onClick={() => setActiveTab('license')}
                 className="font-black hover:underline cursor-pointer"
               >
-                AGPLv3 License
+                License
               </button>
             </div>
           </div>

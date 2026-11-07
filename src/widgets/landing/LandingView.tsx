@@ -41,8 +41,6 @@ interface LandingViewProps {
 }
 
 export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
-  const [showSelfHostModal, setShowSelfHostModal] = useState(false);
-
   // Contact Form State
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -111,7 +109,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
             </span>
           </div>
           <span className="text-[10px] font-black uppercase bg-white px-2 py-0.5 border border-black text-black">
-            AGPLv3 Open Source
+            Carbon accounting
           </span>
         </div>
 
@@ -122,7 +120,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
             className="px-3 py-1.5 bg-emerald-100 hover:bg-emerald-200 text-emerald-950 font-black text-xs uppercase border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] cursor-pointer flex items-center space-x-1"
           >
             <CreditCard className="w-3.5 h-3.5 text-emerald-800" />
-            <span>Pricing & Tiers</span>
+            <span>Talk to us</span>
           </button>
 
           <button
@@ -155,53 +153,45 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
           <div className="inline-flex items-center space-x-2 bg-emerald-100 border-2 border-black px-3 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
             <ShieldCheck className="w-4 h-4 text-emerald-800" />
             <span className="text-xs font-black uppercase text-emerald-950">
-              Auditor-Ready • AGPLv3 Open Source Engine
+              Scope 1, 2, and 3 activity records
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase tracking-tight text-black leading-none">
-            Free, Open-Source Carbon Accounting for SMEs.
+            Carbon accounting for growing businesses.
           </h1>
 
           <p className="text-sm sm:text-base md:text-lg font-bold text-neutral-800 max-w-3xl leading-relaxed">
-            Be compliance-ready in minutes. Generate auditor-ready GHG reports without the $50k enterprise price tag.
+            Record fuel, electricity, travel, and purchased goods, then prepare greenhouse gas reports from those entries.
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
-            <button
-              onClick={() => setShowSelfHostModal(true)}
-              className="px-6 sm:px-8 py-3.5 sm:py-4 bg-white hover:bg-neutral-100 text-black font-black text-xs sm:text-sm uppercase tracking-wider border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-pointer flex items-center justify-center space-x-2"
-            >
-              <Github className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
-              <span>Self-Host Now</span>
-            </button>
-
             <button
               onClick={() => onOpenAuth('register')}
               className="px-5 sm:px-6 py-3.5 sm:py-4 bg-emerald-100 hover:bg-emerald-200 text-black font-black text-xs sm:text-sm uppercase tracking-wider border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-pointer flex items-center justify-center space-x-2"
             >
               <Calculator className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-800" />
-              <span>Start Free Carbon Accounting</span>
+              <span>Create a workspace</span>
             </button>
           </div>
 
           {/* Quick Metrics Bar */}
           <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t-2 border-black">
             <div>
-              <div className="text-xl sm:text-2xl font-black text-black">100%</div>
-              <div className="text-[10px] font-bold uppercase text-neutral-600">Open Source AGPLv3</div>
+              <div className="text-xl sm:text-2xl font-black text-black">Scope 1–3</div>
+              <div className="text-[10px] font-bold uppercase text-neutral-600">Activity ledger</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-black text-black">£0</div>
-              <div className="text-[10px] font-bold uppercase text-neutral-600">Forever Free Self-Host</div>
+              <div className="text-xl sm:text-2xl font-black text-black">DEFRA</div>
+              <div className="text-[10px] font-bold uppercase text-neutral-600">UK 2024 factors included</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-black text-black">DEFRA 2024</div>
-              <div className="text-[10px] font-bold uppercase text-neutral-600">Built-in Conversion Factors</div>
+              <div className="text-xl sm:text-2xl font-black text-black">EPA</div>
+              <div className="text-[10px] font-bold uppercase text-neutral-600">US 2024 factors included</div>
             </div>
             <div>
-              <div className="text-xl sm:text-2xl font-black text-black">CSRD Ready</div>
-              <div className="text-[10px] font-bold uppercase text-neutral-600">EU & UK SECR Compliant</div>
+              <div className="text-xl sm:text-2xl font-black text-black">IPCC</div>
+              <div className="text-[10px] font-bold uppercase text-neutral-600">Global factors included</div>
             </div>
           </div>
         </div>
@@ -248,11 +238,11 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
                 One-Click GHG Reports
               </h3>
               <p className="text-xs font-bold text-neutral-700 leading-relaxed">
-                Generate formal, auditor-ready GHG disclosures in PDF format. Compliant with EU CSRD, UK SECR, GHG Protocol Corporate Standard, and California SB 253.
+                Prepare greenhouse gas report layouts from the activity ledger, including GHG Protocol, UK SECR, EU CSRD, and California SB 253 sections. A report is not an independent assurance opinion.
               </p>
             </div>
             <div className="pt-3 border-t-2 border-black flex items-center justify-between text-[10px] font-black uppercase text-neutral-600">
-              <span>Feature: SHA-256 Hash Proof</span>
+              <span>Feature: Report layouts</span>
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             </div>
           </div>
@@ -264,14 +254,14 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
                 <Server className="w-6 h-6 text-black" />
               </div>
               <h3 className="text-xl font-black uppercase text-black">
-                Zero-Cost Tech Stack
+                Factor libraries included
               </h3>
               <p className="text-xs font-bold text-neutral-700 leading-relaxed">
-                Open source under AGPLv3 license. Run it on your own infrastructure with single-command Docker deployment, or use our fully managed CarbonSnap Cloud service.
+                UK DESNZ/DEFRA, US EPA, and IPCC factors ship with the product so entries can be converted without a separate spreadsheet of coefficients.
               </p>
             </div>
             <div className="pt-3 border-t-2 border-black flex items-center justify-between text-[10px] font-black uppercase text-neutral-600">
-              <span>Feature: Full Data Sovereignty</span>
+              <span>Feature: Included factor packs</span>
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             </div>
           </div>
@@ -375,7 +365,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
             className="px-5 py-2.5 bg-black hover:bg-neutral-800 text-amber-300 font-black text-xs uppercase tracking-wider border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] cursor-pointer flex items-center space-x-2"
           >
             <ArrowRight className="w-4 h-4" />
-            <span>Start Free Accounting</span>
+            <span>Create a workspace</span>
           </button>
         </div>
       </section>
@@ -421,198 +411,28 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
         </div>
       </section>
 
-      {/* 5. PRICING & SAAS SUBSCRIPTION TIERS SECTION */}
-      <section id="pricing-section" className="space-y-6">
-        <div className="bg-amber-300 border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <div className="inline-flex items-center space-x-2 bg-black text-amber-300 px-2.5 py-0.5 text-xs font-black uppercase mb-2">
-              <CreditCard className="w-3.5 h-3.5" />
-              <span>Transparent SaaS & Self-Host Pricing</span>
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-black uppercase text-black">
-              Pick the Perfect Tier for Your Growth
-            </h2>
-            <p className="text-xs sm:text-sm font-bold text-neutral-800 max-w-2xl">
-              From free self-hosted AGPLv3 community engines to fully managed CarbonSnap Cloud and white-label advisory portals.
-            </p>
-          </div>
-          <span className="text-xs font-black uppercase bg-white border-2 border-black px-3 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] text-black self-start md:self-center">
-            No Hidden Setup Fees
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Tier 1: Community Self-Hosted */}
-          <div className="bg-white border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="p-2.5 bg-neutral-100 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                  <Server className="w-6 h-6 text-black" />
-                </div>
-                <span className="text-[10px] font-black uppercase bg-neutral-200 border border-black px-2 py-0.5 text-black">
-                  100% Free AGPLv3
-                </span>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-black uppercase text-black">Community (Self-Hosted)</h3>
-                <p className="text-xs font-bold text-neutral-600 mt-1">
-                  Run on your own server. Full open-source transparency and complete data control.
-                </p>
-              </div>
-
-              <div className="flex items-baseline space-x-1 border-b-2 border-black pb-4">
-                <span className="text-4xl font-black text-black">$0</span>
-                <span className="text-xs font-bold text-neutral-600 uppercase">/ forever free</span>
-              </div>
-
-              <ul className="space-y-2.5 text-xs font-bold text-neutral-800">
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Full carbon calculations engine</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>DEFRA 2024 & EPA factor libraries</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Manual ledger & CSV bulk import</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Auditor-ready PDF report generation</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Single-command Docker container deploy</span>
-                </li>
-              </ul>
-            </div>
-
-            <button
-              onClick={() => setShowSelfHostModal(true)}
-              className="w-full py-3 bg-white hover:bg-neutral-100 text-black font-black text-xs uppercase tracking-wider border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] cursor-pointer flex items-center justify-center space-x-2"
-            >
-              <Github className="w-4 h-4 text-black" />
-              <span>Get Self-Host Docker</span>
-            </button>
-          </div>
-
-          {/* Tier 2: CarbonSnap Cloud (Popular) */}
-          <div className="bg-amber-50 border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between space-y-6 relative">
-            <div className="absolute -top-3 right-4 bg-black text-amber-300 border-2 border-black px-3 py-0.5 text-[10px] font-black uppercase tracking-wider shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-              Recommended for SMEs
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="p-2.5 bg-amber-300 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                  <Cloud className="w-6 h-6 text-black" />
-                </div>
-                <span className="text-[10px] font-black uppercase bg-emerald-300 border border-black px-2 py-0.5 text-black">
-                  Managed Cloud
-                </span>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-black uppercase text-black">CarbonSnap Cloud</h3>
-                <p className="text-xs font-bold text-neutral-700 mt-1">
-                  Fully managed cloud instance for growing SMEs with zero devops overhead.
-                </p>
-              </div>
-
-              <div className="flex items-baseline space-x-1 border-b-2 border-black pb-4">
-                <span className="text-4xl font-black text-black">$79</span>
-                <span className="text-xs font-bold text-neutral-700 uppercase">/ month</span>
-              </div>
-
-              <ul className="space-y-2.5 text-xs font-bold text-neutral-900">
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                  <span>Automatic emission factor updates</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                  <span>Daily automated encrypted cloud backups</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                  <span>Managed cloud uptime & SLA guarantee</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                  <span>SHA-256 auditor verification seals</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                  <span>Priority email & advisory support</span>
-                </li>
-              </ul>
-            </div>
-
-            
-          </div>
-
-          {/* Tier 3: White-Label Partner */}
-          <div className="bg-white border-4 border-black p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <div className="p-2.5 bg-sky-200 border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                  <Users className="w-6 h-6 text-black" />
-                </div>
-                <span className="text-[10px] font-black uppercase bg-sky-300 border border-black px-2 py-0.5 text-black">
-                  Advisory Partner
-                </span>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-black uppercase text-black">White-Label Partner</h3>
-                <p className="text-xs font-bold text-neutral-600 mt-1">
-                  Designed for accounting firms and ESG advisors managing client portfolios.
-                </p>
-              </div>
-
-              <div className="flex items-baseline space-x-1 border-b-2 border-black pb-4">
-                <span className="text-4xl font-black text-black">$500</span>
-                <span className="text-xs font-bold text-neutral-600 uppercase">/ month</span>
-              </div>
-
-              <ul className="space-y-2.5 text-xs font-bold text-neutral-800">
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Multi-tenant client portfolio portal</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Custom domain & white-label branding</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Dedicated partner dashboard</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Unlimited client organisation seats</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>API & webhook programmatic ingestion</span>
-                </li>
-              </ul>
-            </div>
-
-            <button
-              onClick={() => {
-                setInquiryType('Partnership / White-Label');
-                scrollToSection('contact-section');
-              }}
-              className="w-full py-3 bg-black hover:bg-neutral-800 text-amber-300 font-black text-xs uppercase tracking-wider border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] cursor-pointer flex items-center justify-center space-x-2"
-            >
-              <Mail className="w-4 h-4 text-amber-300" />
-              <span>Contact Partner Advisory</span>
-            </button>
-          </div>
+      <section id="pricing-section" className="bg-white border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] space-y-4">
+        <h2 className="text-2xl sm:text-3xl font-black uppercase text-black">
+          Use it as a workspace, not a download
+        </h2>
+        <p className="text-sm font-bold text-neutral-700 max-w-3xl">
+          CarbonSnap is the place to keep an organisation&apos;s activity records and prepare greenhouse gas reports. A published price is not shown here because checkout is not configured.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <button
+            type="button"
+            onClick={() => onOpenAuth('register')}
+            className="px-5 py-3 bg-black text-amber-300 font-black text-xs uppercase border-2 border-black"
+          >
+            Create a workspace
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollToSection('contact-section')}
+            className="px-5 py-3 bg-white font-black text-xs uppercase border-2 border-black"
+          >
+            Contact the team
+          </button>
         </div>
       </section>
 
@@ -627,7 +447,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
             Have Questions or Need Customized Onboarding?
           </h2>
           <p className="text-xs sm:text-sm font-bold text-neutral-700">
-            Reach out to our carbon accounting specialists for advisory guidance, enterprise white-labeling, or self-hosted technical support.
+            Reach out to our carbon accounting specialists for advisory guidance, enterprise white-labeling, or how the workspace fits your reporting period.
           </p>
         </div>
 
@@ -700,7 +520,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
                 <option value="Enterprise Onboarding">Enterprise Cloud Onboarding</option>
                 <option value="Carbon Audit Advisory">Carbon Audit & GHG Reporting</option>
                 <option value="Custom Factor Pack Request">Custom Emission Factor Request</option>
-                <option value="Technical Support / Self-Host">Technical Support / Self-Hosting</option>
+                <option value="Product question">Product question</option>
                 <option value="Partnership / White-Label">Partnership / Advisory Firm White-Label</option>
               </select>
             </div>
@@ -737,63 +557,21 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
             Ready to streamline your SME carbon accounting?
           </h3>
           <p className="text-xs font-bold text-black">
-            Join hundreds of SMEs using CarbonSnap to generate verified carbon disclosures in minutes.
+            Create a workspace and start a reporting period when you are ready to record activity.
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
           
           <button
-            onClick={() => scrollToSection('pricing-section')}
+            onClick={() => onOpenAuth('register')}
             className="w-full sm:w-auto px-6 py-4 bg-white hover:bg-neutral-100 text-black font-black text-xs uppercase tracking-wider border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] cursor-pointer text-center"
           >
-            View Pricing Tiers
+            Create a workspace
           </button>
         </div>
       </section>
 
-      {/* SELF-HOST INSTRUCTIONS MODAL */}
-      {showSelfHostModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs">
-          <div className="relative w-full max-w-lg bg-white border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] space-y-6">
-            <div className="flex items-center justify-between border-b-2 border-black pb-3">
-              <div className="flex items-center space-x-2">
-                <Github className="w-5 h-5 text-black" />
-                <h3 className="text-lg font-black uppercase text-black">Self-Host CarbonSnap (AGPLv3)</h3>
-              </div>
-              <button
-                onClick={() => setShowSelfHostModal(false)}
-                className="px-2 py-1 bg-amber-300 font-black text-xs border border-black cursor-pointer"
-              >
-                X
-              </button>
-            </div>
-
-            <p className="text-xs font-bold text-neutral-700 leading-relaxed">
-              CarbonSnap is 100% open-source software under the AGPLv3 license. You can spin up an instance on your own cloud server or local machine in seconds.
-            </p>
-
-            <div className="space-y-2 bg-neutral-900 text-amber-300 p-4 border-2 border-black font-mono text-xs">
-              <div className="text-neutral-500"># 1. Clone the open-source repository</div>
-              <div>git clone https://github.com/Yashraghuvans/CarbonSnap.git</div>
-              <div className="pt-2 text-neutral-500"># 2. Build & run via Docker</div>
-              <div>cd CarbonSnap && docker build -t carbonsnap .</div>
-              <div>docker run -p 3000:3000 --env-file .env carbonsnap</div>
-              <div className="pt-2 text-neutral-500"># 3. Access locally on port 3000</div>
-              <div className="text-emerald-400">http://localhost:3000</div>
-            </div>
-
-            <div className="pt-2 flex justify-end space-x-3">
-              <button
-                onClick={() => setShowSelfHostModal(false)}
-                className="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-black border-2 border-black font-black text-xs uppercase cursor-pointer"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

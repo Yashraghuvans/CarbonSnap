@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import React, { useState } from 'react';
 import { signAuditorVerification } from '../../shared/api/client';
+import { formatTonnes } from '../../shared/model/inventorySafety';
 import {
   ActivityEntry,
   AuditLog,
@@ -109,7 +110,7 @@ export const AuditorPortalView: React.FC<AuditorPortalViewProps> = ({
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
         <div className="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] space-y-1">
           <span className="text-[10px] font-black uppercase text-neutral-500 block">Total Audited Footprint</span>
-          <div className="text-2xl font-black font-mono text-black">{summary.totalCo2eTonnes.toFixed(2)} t CO₂e</div>
+          <div className="text-2xl font-black font-mono text-black">{formatTonnes(summary.total_tonnes)} t CO₂e</div>
           <span className="text-[10px] font-bold text-emerald-800 uppercase block">100% Calculated</span>
         </div>
 
@@ -122,7 +123,7 @@ export const AuditorPortalView: React.FC<AuditorPortalViewProps> = ({
         <div className="p-4 bg-white border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] space-y-1">
           <span className="text-[10px] font-black uppercase text-neutral-500 block">Scope 1 & 2 Breakdown</span>
           <div className="text-lg font-black font-mono text-black">
-            {(summary.scope1Tonnes + summary.scope2Tonnes).toFixed(2)} t CO₂e
+            {formatTonnes((Number(summary.scope1_kg) + Number(summary.scope2_kg)) / 1000)} t CO₂e
           </div>
           <span className="text-[10px] font-bold text-neutral-500 uppercase block">Direct Utilities</span>
         </div>

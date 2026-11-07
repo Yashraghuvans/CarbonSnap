@@ -150,7 +150,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <span className="inline-block bg-black text-amber-300 font-black text-[9px] uppercase px-2 py-0.5 border border-black shadow-[1px_1px_0px_0px_rgba(0,0,0,1)]">
-            AGPLv3
+            Product
           </span>
         </div>
         <p className="text-[10px] font-bold uppercase text-neutral-800 leading-tight">
