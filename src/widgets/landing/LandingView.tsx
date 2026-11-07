@@ -238,11 +238,11 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
                 One-Click GHG Reports
               </h3>
               <p className="text-xs font-bold text-neutral-700 leading-relaxed">
-                Generate formal, auditor-ready GHG disclosures in PDF format. Compliant with EU CSRD, UK SECR, GHG Protocol Corporate Standard, and California SB 253.
+                Prepare greenhouse gas report layouts from the activity ledger, including GHG Protocol, UK SECR, EU CSRD, and California SB 253 sections. A report is not an independent assurance opinion.
               </p>
             </div>
             <div className="pt-3 border-t-2 border-black flex items-center justify-between text-[10px] font-black uppercase text-neutral-600">
-              <span>Feature: SHA-256 Hash Proof</span>
+              <span>Feature: Report layouts</span>
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             </div>
           </div>
@@ -261,7 +261,7 @@ export const LandingView: React.FC<LandingViewProps> = ({ onOpenAuth }) => {
               </p>
             </div>
             <div className="pt-3 border-t-2 border-black flex items-center justify-between text-[10px] font-black uppercase text-neutral-600">
-              <span>Feature: Full Data Sovereignty</span>
+              <span>Feature: Included factor packs</span>
               <CheckCircle2 className="w-4 h-4 text-emerald-600" />
             </div>
           </div>
