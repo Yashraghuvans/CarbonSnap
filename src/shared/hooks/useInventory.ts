@@ -29,10 +29,12 @@ export function useInventory(input: UseInventoryInput) {
   const [summary, setSummary] = useState<EmissionsSummary | null>(null);
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
     if (!activeOrgId || !activePeriodId || !isAuthenticated) return;
     setLoading(true);
+    setError(null);
     try {
       const [acts, sum, logs] = await Promise.all([
         fetchActivities(activeOrgId, activePeriodId),
@@ -43,6 +45,8 @@ export function useInventory(input: UseInventoryInput) {
       setSummary(sum);
       setAuditLogs(logs);
     } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to load the carbon inventory.';
+      setError(message);
       console.error('[useInventory] failed to refresh inventory:', err);
     } finally {
       setLoading(false);
@@ -82,6 +86,7 @@ export function useInventory(input: UseInventoryInput) {
   return useMemo(
     () => ({
       loading,
+      error,
       activities,
       summary,
       auditLogs,
@@ -90,6 +95,6 @@ export function useInventory(input: UseInventoryInput) {
       updateActivity: updateActivityById,
       deleteActivity: deleteActivityById
     }),
-    [loading, activities, summary, auditLogs, refresh, addActivity, updateActivityById, deleteActivityById]
+    [loading, error, activities, summary, auditLogs, refresh, addActivity, updateActivityById, deleteActivityById]
   );
 }

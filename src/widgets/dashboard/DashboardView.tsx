@@ -342,7 +342,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       </div>
 
       {/* PHASE 4: HOTSPOT ANALYSIS ENGINE */}
-      {summary.hotspots && summary.hotspots.length > 0 && (
+      {(summary.hotspots ?? []).length > 0 && (
         <div className="bg-amber-50 border-2 border-black p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b-2 border-black pb-3">
             <div>
@@ -454,13 +454,13 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
           </div>
 
-          {summary.byCategory.length === 0 ? (
+          {(summary.byCategory ?? []).length === 0 ? (
             <div className="h-64 flex items-center justify-center text-neutral-500 text-xs font-bold uppercase">
               No categories populated yet. Log activities to generate breakdown.
             </div>
           ) : (
             <div className="space-y-4 max-h-64 overflow-y-auto pr-1">
-              {summary.byCategory.map((cat, idx) => {
+              {(summary.byCategory ?? []).map((cat, idx) => {
                 return (
                   <div key={idx} className="space-y-1">
                     <div className="flex items-center justify-between text-xs font-black uppercase">
@@ -484,7 +484,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       </div>
 
       {/* Monthly Trend Chart */}
-      {summary.monthlyTrend.length > 0 && (
+      {(summary.monthlyTrend ?? []).length > 0 && (
         <div className="bg-white border-2 border-black p-6 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
           <div className="flex items-center justify-between mb-4 pb-3 border-b-2 border-black">
             <div>

@@ -2232,24 +2232,27 @@ export class Store {
     let transportKwh = 0;
 
     for (const a of activities) {
-      if (a.activityType === 'Electricity') elecKwh += a.quantity;
-      else if (a.activityType === 'Natural Gas' || a.activityType === 'Stationary Fuel') gasKwh += a.quantity;
-      else if (a.activityType.includes('Vehicle') || a.activityType.includes('Travel')) transportKwh += a.quantity;
+      const activityType = typeof a.activityType === 'string' ? a.activityType : '';
+      const quantity = Number(a.quantity);
+      if (!Number.isFinite(quantity)) continue;
+      if (activityType === 'Electricity') elecKwh += quantity;
+      else if (activityType === 'Natural Gas' || activityType === 'Stationary Fuel') gasKwh += quantity;
+      else if (activityType.includes('Vehicle') || activityType.includes('Travel')) transportKwh += quantity;
     }
 
-    const totalKwh = elecKwh + gasKwh + transportKwh || 125000;
+    const totalKwh = elecKwh + gasKwh + transportKwh;
     const scope1Tonnes = summary.scope1_kg / 1000;
     const scope2Tonnes = summary.scope2_kg / 1000;
     const totalTonnes = summary.total_tonnes;
 
-    const turnoverM = org?.annualRevenueGbp ? org.annualRevenueGbp / 1000000 : 15.0;
-    const intensityVal = Number((totalTonnes / turnoverM).toFixed(2));
+    const turnoverM = org?.annualRevenueGbp ? org.annualRevenueGbp / 1000000 : 0;
+    const intensityVal = turnoverM > 0 ? Number((totalTonnes / turnoverM).toFixed(2)) : 0;
 
     return {
       ukEnergyConsumptionKwh: {
-        electricityKwh: elecKwh || 65000,
-        gasKwh: gasKwh || 48000,
-        transportKwh: transportKwh || 12000,
+        electricityKwh: elecKwh,
+        gasKwh: gasKwh,
+        transportKwh: transportKwh,
         totalKwh
       },
       scope1TonnesCo2e: scope1Tonnes,
@@ -2566,29 +2569,12 @@ export class Store {
     return lead;
   }
 
-  public getPublicVerificationCertificate(certId: string): PublicVerificationCertificate {
+  public getPublicVerificationCertificate(certId: string): PublicVerificationCertificate | null {
     if (this.publicCertificates.has(certId)) {
       return this.publicCertificates.get(certId)!;
     }
 
-    const fallbackCert: PublicVerificationCertificate = {
-      certificateId: certId.startsWith('cert_') ? certId : `cert_val_${certId}`,
-      reportId: certId,
-      organisationName: 'Acme Eco Tech Solutions Ltd',
-      reportingPeriodName: 'FY 2024-2025',
-      verifiedBy: 'Sarah Jenkins (Lead Carbon Auditor, ISO 14064 Certified)',
-      verifiedAt: '2026-07-30T10:00:00Z',
-      sha256Hash: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
-      totalTonnesCo2e: 42.85,
-      scope1Tonnes: 12.40,
-      scope2Tonnes: 18.25,
-      scope3Tonnes: 12.20,
-      datasetVersionsUsed: ['UK DESNZ / DEFRA 2024 v2024.1.2', 'US EPA Emission Factors 2024'],
-      frameworksCompliant: ['GHG Protocol Corporate Standard', 'UK SECR', 'EU CSRD ESRS E1', 'California SB 253'],
-      verificationStatus: 'VALID_CERTIFIED'
-    };
-
-    return fallbackCert;
+    return null;
   }
 
   public getCaliforniaSbReport(orgId: string, periodId: string): CaliforniaSbReport {

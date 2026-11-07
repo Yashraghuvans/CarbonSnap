@@ -139,7 +139,7 @@ export const EmissionFactorsView: React.FC<EmissionFactorsViewProps> = ({
     f =>
       f.name.toLowerCase().includes(search.toLowerCase()) ||
       f.category.toLowerCase().includes(search.toLowerCase()) ||
-      f.description.toLowerCase().includes(search.toLowerCase())
+      (f.description ?? '').toLowerCase().includes(search.toLowerCase())
   );
 
   return (
@@ -319,7 +319,7 @@ export const EmissionFactorsView: React.FC<EmissionFactorsViewProps> = ({
                       <td className="p-3 border-r border-black text-emerald-700">{hof.totalFactorsAdded} Factors</td>
                       <td className="p-3">
                         <div className="flex flex-wrap gap-1">
-                          {hof.badges.map((badge, idx) => (
+                          {(hof.badges ?? []).map((badge, idx) => (
                             <span key={idx} className="bg-amber-200 border border-black px-1.5 py-0.5 text-[9px] font-black uppercase text-black">
                               {badge.replace(/_/g, ' ')}
                             </span>
@@ -352,7 +352,7 @@ export const EmissionFactorsView: React.FC<EmissionFactorsViewProps> = ({
                     {d.country} ({d.year})
                   </span>
                   <span className={`text-[10px] px-2 py-0.5 font-mono font-bold uppercase border border-current ${selectedDataset === d.dataset ? 'bg-white text-black' : 'bg-black text-white'}`}>
-                    {d.factors.length} Factors
+                    {(d.factors ?? []).length} Factors
                   </span>
                 </div>
                 <h3 className="text-base font-black uppercase tracking-tight">{d.name}</h3>

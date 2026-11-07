@@ -143,7 +143,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [initializing, setInitializing] = useState(true);
 
   const refreshProfile = async () => {
-    const u = firebaseAuth.currentUser;
+    const u = firebaseAuth?.currentUser;
     if (!u) {
       localSession = null;
       setProfile(null);
@@ -188,6 +188,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   useEffect(() => {
+    if (!firebaseAuth) {
+      setInitializing(false);
+      return;
+    }
     const unsubscribe = onAuthStateChanged(firebaseAuth, async (fbUser) => {
       setUser(fbUser);
       if (fbUser) {
@@ -204,6 +208,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const signIn = async (email: string, password: string) => {
+    if (!firebaseAuth) throw new Error('Sign-in is not configured.');
     await signInWithEmailAndPassword(firebaseAuth, email, password);
     await refreshProfile();
   };
@@ -216,6 +221,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     country: string;
     logoUrl?: string;
   }): Promise<RegisteredWorkspace> => {
+    if (!firebaseAuth) throw new Error('Sign-in is not configured.');
     const credential = await createUserWithEmailAndPassword(
       firebaseAuth,
       params.email,
@@ -281,6 +287,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signInWithGoogle = async () => {
+    if (!firebaseAuth) throw new Error('Sign-in is not configured.');
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
     const result = await signInWithPopup(firebaseAuth, provider);
@@ -291,7 +298,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signOut = async () => {
-    await firebaseSignOut(firebaseAuth);
+    if (firebaseAuth) await firebaseSignOut(firebaseAuth);
     localSession = null;
     setProfile(null);
     setOrganisation(null);
@@ -300,6 +307,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const resetPassword = async (email: string) => {
+    if (!firebaseAuth) throw new Error('Sign-in is not configured.');
     await sendPasswordResetEmail(firebaseAuth, email);
   };
 

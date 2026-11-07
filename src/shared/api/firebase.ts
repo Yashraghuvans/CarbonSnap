@@ -12,30 +12,43 @@ import {
 } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
+const viteEnv: Partial<ImportMetaEnv> =
+  typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env : {};
+
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY as string,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN as string,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID as string,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET as string,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID as string,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID as string,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID as string
+  apiKey: viteEnv.VITE_FIREBASE_API_KEY,
+  authDomain: viteEnv.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: viteEnv.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: viteEnv.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: viteEnv.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: viteEnv.VITE_FIREBASE_APP_ID,
+  measurementId: viteEnv.VITE_FIREBASE_MEASUREMENT_ID
 };
 
-if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
-  throw new Error(
-    'Missing Firebase configuration. Ensure VITE_FIREBASE_* variables are set in .env (see .env.example).'
-  );
-}
+export const isFirebaseConfigured = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId);
 
-export const firebaseApp = initializeApp(firebaseConfig);
-export const firebaseAuth = getAuth(firebaseApp);
-export const firebaseDb = getFirestore(firebaseApp);
+export const firebaseApp = isFirebaseConfigured
+  ? initializeApp({
+      apiKey: firebaseConfig.apiKey,
+      authDomain: firebaseConfig.authDomain,
+      projectId: firebaseConfig.projectId,
+      storageBucket: firebaseConfig.storageBucket,
+      messagingSenderId: firebaseConfig.messagingSenderId,
+      appId: firebaseConfig.appId,
+      measurementId: firebaseConfig.measurementId
+    })
+  : null;
+export const firebaseAuth = firebaseApp ? getAuth(firebaseApp) : null;
+export const firebaseDb = firebaseApp ? getFirestore(firebaseApp) : null;
 
 // Persist the auth session across page reloads.
-void setPersistence(firebaseAuth, browserLocalPersistence);
+if (firebaseAuth) {
+  void setPersistence(firebaseAuth, browserLocalPersistence);
+}
 
 // Analytics is optional and may not be supported in all environments.
-export const firebaseAnalytics = analyticsSupported()
-  .then((supported) => (supported ? getAnalytics(firebaseApp) : null))
-  .catch(() => null);
+export const firebaseAnalytics = firebaseApp
+  ? analyticsSupported()
+      .then((supported) => (supported ? getAnalytics(firebaseApp) : null))
+      .catch(() => null)
+  : Promise.resolve(null);
